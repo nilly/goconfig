@@ -46,6 +46,7 @@ func (c *ConfigFile) read(reader io.Reader) (err error) {
 	// Parse line-by-line
 	for {
 		line, err := buf.ReadString('\n')
+		line = strings.Trimright(line,'\r\n\t')
 		line = strings.TrimSpace(line)
 		lineLengh := len(line) //[SWH|+]
 		if err != nil {
